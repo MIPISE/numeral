@@ -2,8 +2,12 @@
 
 module NumeralSdk
   module Helpers
-    def generate_uri
-      name.split("::")[1..].join("/").downcase
+    def generate_uri(opt = {})
+      options = opt.map { |key, value| "#{key}=#{value}" }.join("&") if opt.any?
+
+      uri = name.split("::")[1..].join("/").downcase
+      uri += "?#{options}" if !options.nil?
+      uri
     end
 
     def ensure_keys(hash, required_keys = %i[], optional_keys = %i[])

@@ -21,7 +21,6 @@ module NumeralSdk
 
     def request(path, body: {}, method: "GET")
       uri = URI.parse("#{NumeralSdk.configuration.url_api || ENV["NUMERAL_URL_API"]}/#{path}")
-      http_args = [uri.host, uri.port]
       headers = {
         "content-type" => "application/json",
         "accept" => "application/json",
@@ -29,9 +28,10 @@ module NumeralSdk
       }
       headers.merge("idempotency-key" => body.delete("idempotency-key")) if !body["idempotency-key"].nil?
 
-      http = Net::HTTP.new(*http_args)
+      http = Net::HTTP.new(uri.host, uri.port)
       http.use_ssl = true
       res = http.send_request(method, uri.path, body.to_json, headers)
+
       JSON.parse(res.body)
     end
   end

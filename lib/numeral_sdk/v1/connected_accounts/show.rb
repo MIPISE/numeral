@@ -6,8 +6,10 @@ module NumeralSdk
       extend Helpers
 
       class << self
-        def get_accounts_list
-          NumeralSdk.get(generate_uri)
+        def get_accounts_list(opt: {})
+          ensure_keys(opt, [], %i[limit starting_after sort_order start_date end_date])
+
+          NumeralSdk.get(generate_uri(opt))
         end
       end
     end
