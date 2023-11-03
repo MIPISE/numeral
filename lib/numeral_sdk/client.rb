@@ -22,16 +22,15 @@ module NumeralSdk
     def request(path, body: {}, method: "GET")
       uri = URI.parse("#{NumeralSdk.configuration.url_api || ENV["NUMERAL_URL_API"]}/#{path}")
       headers = {
-        "content-type" => "application/json",
-        "accept" => "application/json",
-        "x-api-key" => NumeralSdk.configuration.api_key || ENV["NUMERAL_API_KEY"]
+        "content-type": "application/json",
+        "accept": "application/json",
+        "x-api-key": NumeralSdk.configuration.api_key || ENV["NUMERAL_API_KEY"]
       }
       headers.merge("idempotency-key" => body.delete("idempotency-key")) if !body["idempotency-key"].nil?
 
       http = Net::HTTP.new(uri.host, uri.port)
       http.use_ssl = true
       res = http.send_request(method, uri.path, body.to_json, headers)
-
       JSON.parse(res.body)
     end
   end

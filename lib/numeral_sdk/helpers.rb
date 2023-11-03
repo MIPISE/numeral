@@ -5,7 +5,7 @@ module NumeralSdk
     def generate_uri(opt = {})
       options = opt.map { |key, value| "#{key}=#{value}" }.join("&") if opt.any?
 
-      uri = name.split("::")[1..].join("/").downcase
+      uri = underscore(name.delete_prefix("NumeralSdk::"))
       uri += "?#{options}" if !options.nil?
       uri
     end
@@ -27,6 +27,14 @@ module NumeralSdk
       end
 
       hash
+    end
+
+    def underscore(string)
+      string.gsub(/::/, '/')
+        .gsub(/([A-Z]+)([A-Z][a-z])/,'\1_\2')
+        .gsub(/([a-z\d])([A-Z])/,'\1_\2')
+        .tr("-", "_")
+        .downcase
     end
   end
 end
