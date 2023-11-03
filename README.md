@@ -10,13 +10,14 @@ NumeralSdk.configuration do |conf|
 end
 ```
 
-## Accounts
-### Index
+### Accounts
 ```rb
-NumeralSdk::V1::ConnectedAccounts.get_list(options)
+NumeralSdk::V1::ConnectedAccounts.get_list(options) # Index
+NumeralSdk::V1::ConnectedAccounts::AccountId.get(account_id) # Show
 ```
-### Show
+### Balances
 ```rb
-NumeralSdk::V1::ConnectedAccounts::AccountId.get(account_id)
+NumeralSdk::V1::Balances.get_list(options) # Index
+NumeralSdk::V1::Balances::AccountId.get(account_id) # Show
 ```
-------------------------------------
+

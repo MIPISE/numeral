@@ -2,7 +2,7 @@
 
 module NumeralSdk
   module V1
-    module ConnectedAccounts
+    module Balances
       extend Helpers
 
       class << self
@@ -13,6 +13,13 @@ module NumeralSdk
             sort_order
             start_date
             end_date
+            connected_account_id
+            direction
+            type
+            currency
+            amount_from
+            amount_to
+            file_id
           ]
           ensure_keys(uri_opt, [], permitted_uri_opt)
 
