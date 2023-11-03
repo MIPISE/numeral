@@ -5,15 +5,15 @@ require "test_helper"
 describe "Helpers" do
   describe "#generate_uri" do
     it "render URI based on Class name" do
-      assert NumeralSdk::V1::ConnectedAccounts.generate_uri == "v1/connectedaccounts"
+      assert NumeralSdk::V1::ConnectedAccounts.generate_uri == "v1/connected_accounts"
     end
 
     it "render URI based on Class name with 1 option" do
-      assert NumeralSdk::V1::ConnectedAccounts.generate_uri({test: "test"}) == "v1/connectedaccounts?test=test"
+      assert NumeralSdk::V1::ConnectedAccounts.generate_uri({test: "test"}) == "v1/connected_accounts?test=test"
     end
 
     it "render URI based on Class name with 2 options" do
-      assert NumeralSdk::V1::ConnectedAccounts.generate_uri({test: "test", test2: "test2"}) == "v1/connectedaccounts?test=test&test2=test2"
+      assert NumeralSdk::V1::ConnectedAccounts.generate_uri({test: "test", test2: "test2"}) == "v1/connected_accounts?test=test&test2=test2"
     end
   end
 

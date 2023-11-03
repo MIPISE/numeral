@@ -27,10 +27,11 @@ module NumeralSdk
         "x-api-key": NumeralSdk.configuration.api_key || ENV["NUMERAL_API_KEY"]
       }
       headers.merge("idempotency-key" => body.delete("idempotency-key")) if !body["idempotency-key"].nil?
-
       http = Net::HTTP.new(uri.host, uri.port)
       http.use_ssl = true
-      res = http.send_request(method, uri.path, body.to_json, headers)
+      res = http.send_request(method, uri.to_s, body.to_json, headers)
+
+      return {"error" => "not found"} if res.body == ""
       JSON.parse(res.body)
     end
   end
