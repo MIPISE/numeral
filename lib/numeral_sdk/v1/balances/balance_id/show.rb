@@ -7,7 +7,7 @@ module NumeralSdk
         extend Helpers
 
         class << self
-          def get(balance_id_id)
+          def get(balance_id)
             NumeralSdk.get(generate_uri.gsub("balance_id", balance_id))
           end
         end
