@@ -14,7 +14,7 @@ describe "Configuration" do
       (conf = Numeral.configuration)
         .to_h
         .keys
-        .each{ |key| conf.delete_field(key) }
+        .each { |key| conf.delete_field(key) }
     end
 
     it "configuration work correctly" do
