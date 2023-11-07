@@ -20,11 +20,11 @@ module Numeral
     private
 
     def request(path, body: {}, method: "GET")
-      uri = URI.parse("#{Numeral.configuration.url_api || ENV["NUMERAL_URL_API"]}/#{path}")
+      uri = URI.parse("#{Numeral.configuration.url_api}/#{path}")
       headers = {
         "content-type": "application/json",
         accept: "application/json",
-        "x-api-key": Numeral.configuration.api_key || ENV["NUMERAL_API_KEY"]
+        "x-api-key": Numeral.configuration.api_key
       }
       headers.merge("idempotency-key" => body.delete("idempotency-key")) if !body["idempotency-key"].nil?
       http = Net::HTTP.new(uri.host, uri.port)
