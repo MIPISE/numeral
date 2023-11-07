@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    numeral_sdk (0.1.0)
+    numeral (0.1.0)
 
 GEM
   remote: https://rubygems.org/
@@ -25,7 +25,7 @@ DEPENDENCIES
   dotenv
   minitest
   minitest-reporters
-  numeral_sdk!
+  numeral!
   rake
 
 BUNDLED WITH
