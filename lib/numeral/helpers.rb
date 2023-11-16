@@ -2,10 +2,12 @@
 
 module Numeral
   module Helpers
-    def generate_uri(opt = {})
+    def generate_uri(opt = {}, post = nil)
+      post_option = post
       options = opt.map { |key, value| "#{key}=#{value}" }.join("&") if opt.any?
 
       uri = underscore(name.delete_prefix("Numeral::"))
+      uri += "/#{post_option}" if !post_option.nil?
       uri += "?#{options}" if !options.nil?
       uri
     end

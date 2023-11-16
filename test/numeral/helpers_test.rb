@@ -15,6 +15,14 @@ describe "Helpers" do
     it "render URI based on Class name with 2 options" do
       assert Numeral::V1::ConnectedAccounts.generate_uri({test: "test", test2: "test2"}) == "v1/connected_accounts?test=test&test2=test2"
     end
+
+    it "render URI based on Class name with post option and options" do
+      assert Numeral::V1::ConnectedAccounts.generate_uri({test: "test", test2: "test2"}, "disable") == "v1/connected_accounts/disable?test=test&test2=test2"
+    end
+
+    it "render URI based on Class name with post option" do
+      assert Numeral::V1::ConnectedAccounts.generate_uri({}, "disable") == "v1/connected_accounts/disable"
+    end
   end
 
   describe "#ensure_keys" do
