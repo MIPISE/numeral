@@ -50,9 +50,9 @@ describe "Numeral::V1::DirectDebitMandates::DirectDebitMandateId#update" do
 end
 
 describe "Numeral::V1::DirectDebitMandates::DirectDebitMandateId#disable" do
-  before do
+  it "render disabled direct debit mandate" do
     connected_account_id = Numeral::V1::ConnectedAccounts.get_list(uri_opt: {limit: "1"})["records"].first["id"]
-    @body = {
+    body = {
       direction: "outgoing",
       type: "sepa_core",
       connected_account_id: connected_account_id,
@@ -71,14 +71,11 @@ describe "Numeral::V1::DirectDebitMandates::DirectDebitMandateId#disable" do
       reference: "test-#{SecureRandom.hex(10)}",
       signature_date: "2023-05-31"
     }
-    @direct_debit_mandate_id = Numeral::V1::DirectDebitMandates.create(body: @body)["id"]
-  end
-
-  it "render disabled direct debit mandate" do
-    res = Numeral::V1::DirectDebitMandates::DirectDebitMandateId.disable(@direct_debit_mandate_id)
+    direct_debit_mandate_id = Numeral::V1::DirectDebitMandates.create(body: body)["id"]
+    res = Numeral::V1::DirectDebitMandates::DirectDebitMandateId.disable(direct_debit_mandate_id)
 
     assert res.is_a? Hash
-    assert res.dig("id") == @direct_debit_mandate_id
+    assert res.dig("id") == direct_debit_mandate_id
     assert res.dig("status") == "disabled"
   end
 
@@ -98,9 +95,9 @@ describe "Numeral::V1::DirectDebitMandates::DirectDebitMandateId#disable" do
 end
 
 describe "Numeral::V1::DirectDebitMandates::DirectDebitMandateId#block" do
-  before do
+  it "render blocked direct debit mandate" do
     connected_account_id = Numeral::V1::ConnectedAccounts.get_list(uri_opt: {limit: "1"})["records"].first["id"]
-    @body = {
+    body = {
       direction: "incoming",
       type: "sepa_core",
       connected_account_id: connected_account_id,
@@ -119,14 +116,11 @@ describe "Numeral::V1::DirectDebitMandates::DirectDebitMandateId#block" do
       reference: "test-#{SecureRandom.hex(10)}",
       signature_date: "2023-05-31"
     }
-    @direct_debit_mandate_id = Numeral::V1::DirectDebitMandates.create(body: @body)["id"]
-  end
-
-  it "render blocked direct debit mandate" do
-    res = Numeral::V1::DirectDebitMandates::DirectDebitMandateId.block(@direct_debit_mandate_id)
+    direct_debit_mandate_id = Numeral::V1::DirectDebitMandates.create(body: body)["id"]
+    res = Numeral::V1::DirectDebitMandates::DirectDebitMandateId.block(direct_debit_mandate_id)
 
     assert res.is_a? Hash
-    assert res.dig("id") == @direct_debit_mandate_id
+    assert res.dig("id") == direct_debit_mandate_id
     assert res.dig("status") == "blocked"
   end
 
@@ -146,9 +140,9 @@ describe "Numeral::V1::DirectDebitMandates::DirectDebitMandateId#block" do
 end
 
 describe "Numeral::V1::DirectDebitMandates::DirectDebitMandateId#authorize" do
-  before do
+  it "render blocked direct debit mandate" do
     connected_account_id = Numeral::V1::ConnectedAccounts.get_list(uri_opt: {limit: "1"})["records"].first["id"]
-    @body = {
+    body = {
       direction: "incoming",
       type: "sepa_core",
       connected_account_id: connected_account_id,
@@ -167,15 +161,12 @@ describe "Numeral::V1::DirectDebitMandates::DirectDebitMandateId#authorize" do
       reference: "test-#{SecureRandom.hex(10)}",
       signature_date: "2023-05-31"
     }
-    @direct_debit_mandate_id = Numeral::V1::DirectDebitMandates.create(body: @body)["id"]
+    direct_debit_mandate_id = Numeral::V1::DirectDebitMandates.create(body: body)["id"]
     Numeral::V1::DirectDebitMandates::DirectDebitMandateId.block(@direct_debit_mandate_id)
-  end
-
-  it "render blocked direct debit mandate" do
-    res = Numeral::V1::DirectDebitMandates::DirectDebitMandateId.authorize(@direct_debit_mandate_id)
+    res = Numeral::V1::DirectDebitMandates::DirectDebitMandateId.authorize(direct_debit_mandate_id)
 
     assert res.is_a? Hash
-    assert res.dig("id") == @direct_debit_mandate_id
+    assert res.dig("id") == direct_debit_mandate_id
     assert res.dig("status") == "active"
   end
 

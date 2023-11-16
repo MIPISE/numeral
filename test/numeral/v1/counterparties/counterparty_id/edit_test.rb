@@ -12,7 +12,7 @@ describe "Numeral::V1::Counterparties::CounterpartyId#update" do
     }
   end
 
-  it "render updated direct counterparty" do
+  it "render updated counterparty" do
     res = Numeral::V1::Counterparties::CounterpartyId.update(@counterparty_id, body: @body)
 
     assert res.is_a? Hash
@@ -50,12 +50,9 @@ describe "Numeral::V1::Counterparties::CounterpartyId#update" do
 end
 
 describe "Numeral::V1::Counterparties::CounterpartyId#disable" do
-  before do
+  it "render disabled counterparty" do
     @body = { name: "test-#{SecureRandom.hex(10)}" }
     @counterparty_id = Numeral::V1::Counterparties.create(body: @body)["id"]
-  end
-
-  it "render disabled counterparty" do
     res = Numeral::V1::Counterparties::CounterpartyId.disable(@counterparty_id)
 
     assert res.is_a? Hash
