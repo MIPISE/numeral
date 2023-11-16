@@ -1,5 +1,15 @@
 # Numeral
-
+-------------
+_**SUMMARY**_
+* [Configuration](https://github.com/MIPISE/numeral/README.md#configuration)
+* [Requests](https://github.com/MIPISE/numeral/README.md#requests)
+  * [Balances](https://github.com/MIPISE/numeral/README.md#balances)
+  * [Connected Accounts](https://github.com/MIPISE/numeral/README.md#connectedaccounts)
+  * [Counterparties](https://github.com/MIPISE/numeral/README.md#counterparties)
+  * [Counterparty Accounts](https://github.com/MIPISE/numeral/README.md#counterpartyaccounts)
+  * [Direct Debit Mandates](https://github.com/MIPISE/numeral/README.md#directdebitmandates)
+  * [Transactions](https://github.com/MIPISE/numeral/README.md#transactions)
+-------------
 ## Configuration
 ```rb
 require "numeral"
