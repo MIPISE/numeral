@@ -7,7 +7,7 @@ module Numeral
         extend Helpers
 
         class << self
-          def get(direct_debit_mandate_id, body)
+          def get(direct_debit_mandate_id)
             Numeral.get(generate_uri.gsub("direct_debit_mandate_id", direct_debit_mandate_id))
           end
         end
