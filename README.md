@@ -67,3 +67,14 @@ A transaction is a debit or credit transaction on a connected account. Numeral c
 Numeral::V1::Transactions.get_list(options)
 Numeral::V1::Transactions::TransactionId.get(transaction_id)
 ```
+### VirtualAccounts
+A virtual account is a unique account number linked to a main bank account. It can be assigned to counterparties and expected payments to facilitate the identification of payments received, as part of a manual or automated reconciliation.
+```rb
+Numeral::V1::VirtualAccounts.get_list(options)
+Numeral::V1::VirtualAccounts.create(body: body)
+Numeral::V1::VirtualAccounts::VirtualAccountId.get(virtual_account_id)
+Numeral::V1::VirtualAccounts::VirtualAccountId.update(virtual_account_id, body: body)
+Numeral::V1::VirtualAccounts::VirtualAccountId.disable(virtual_account_id)
+Numeral::V1::VirtualAccounts::VirtualAccountId::Counterparties::CounterpartyId.assign(virtual_account_id, counterparty_id)
+Numeral::V1::VirtualAccounts::VirtualAccountId::Counterparties::CounterpartyId.unassign(virtual_account_id, counterparty_id)
+```
