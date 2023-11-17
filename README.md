@@ -9,6 +9,7 @@ _**SUMMARY**_
   * [Counterparty Accounts](https://github.com/MIPISE/numeral#counterpartyaccounts)
   * [Direct Debit Mandates](https://github.com/MIPISE/numeral#directdebitmandates)
   * [Transactions](https://github.com/MIPISE/numeral#transactions)
+  * [Virtual Accounts](https://github.com/MIPISE/numeral#virtualaccounts)
 -------------
 ## Configuration
 ```rb
