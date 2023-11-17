@@ -51,7 +51,7 @@ end
 
 describe "Numeral::V1::Counterparties::CounterpartyId#disable" do
   it "render disabled counterparty" do
-    @body = { name: "test-#{SecureRandom.hex(10)}" }
+    @body = {name: "test-#{SecureRandom.hex(10)}"}
     @counterparty_id = Numeral::V1::Counterparties.create(body: @body)["id"]
     res = Numeral::V1::Counterparties::CounterpartyId.disable(@counterparty_id)
 
