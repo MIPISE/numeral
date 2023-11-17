@@ -8,6 +8,7 @@ _**SUMMARY**_
   * [Counterparties](https://github.com/MIPISE/numeral#counterparties)
   * [Counterparty Accounts](https://github.com/MIPISE/numeral#counterpartyaccounts)
   * [Direct Debit Mandates](https://github.com/MIPISE/numeral#directdebitmandates)
+  * [Payment Orders](https://github.com/MIPISE/numeral#paymentorders)
   * [Transactions](https://github.com/MIPISE/numeral#transactions)
   * [Virtual Accounts](https://github.com/MIPISE/numeral#virtualaccounts)
 -------------
@@ -61,6 +62,17 @@ Numeral::V1::DirectDebitMandates::DirectDebitMandateId.update(direct_debit_manda
 Numeral::V1::DirectDebitMandates::DirectDebitMandateId.disable(direct_debit_mandate_id)
 Numeral::V1::DirectDebitMandates::DirectDebitMandateId.block(direct_debit_mandate_id)
 Numeral::V1::DirectDebitMandates::DirectDebitMandateId.authorize(direct_debit_mandate_id)
+```
+### PaymentOrders
+A payment order is an order to create a payment to or out of one of your connected accounts. Numeral connects to your bank to process this payment and sends status updates through webhooks.
+```rb
+Numeral::V1::PaymentOrders.get_list(options)
+Numeral::V1::PaymentOrders.create(body: body)
+Numeral::V1::PaymentOrders::PaymentOrderId.get(payment_order_id)
+Numeral::V1::PaymentOrders::PaymentOrderId.update(payment_order_id, body: body)
+Numeral::V1::PaymentOrders::PaymentOrderId.approve(payment_order_id)
+Numeral::V1::PaymentOrders::PaymentOrderId.cancel(payment_order_id)
+Numeral::V1::PaymentOrders::PaymentOrderId.retry(payment_order_id, body: body)
 ```
 ### Transactions
 A transaction is a debit or credit transaction on a connected account. Numeral connects to your bank to retrieve account statements and extract transactions.
