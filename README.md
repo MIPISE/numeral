@@ -10,6 +10,7 @@ _**SUMMARY**_
   * [Direct Debit Mandates](https://github.com/MIPISE/numeral#directdebitmandates)
   * [Payment Orders](https://github.com/MIPISE/numeral#paymentorders)
   * [Returns](https://github.com/MIPISE/numeral#returns)
+  * [ReturnRequests](https://github.com/MIPISE/numeral#returnrequests)
   * [Transactions](https://github.com/MIPISE/numeral#transactions)
   * [Virtual Accounts](https://github.com/MIPISE/numeral#virtualaccounts)
 -------------
@@ -82,7 +83,17 @@ A return is the return of an incoming payment or payment order.
 ```rb
 Numeral::V1::Returns.get_list(options)
 Numeral::V1::Returns.create(body: body)
-Numeral::V1::Returns::TransactionId.get(transaction_id)
+Numeral::V1::Returns::ReturnId.get(return_id)
+```
+### ReturnRequests
+Also sometimes called a recall, a return request is the request to return an incoming payment or payment order. This feature is only available to financial institution customers.
+***⚠️ TEST failing. Can't create or update a return because can't validate a payment by the bank***
+```rb
+Numeral::V1::ReturnRequests.get_list(options)
+Numeral::V1::ReturnRequests.create(body: body)
+Numeral::V1::ReturnRequests::ReturnRequestId.get(return_request_id)
+Numeral::V1::ReturnRequests::ReturnRequestId.deny(return_request_id)
+Numeral::V1::ReturnRequests::ReturnRequestId.accept(return_request_id)
 ```
 ### Transactions
 A transaction is a debit or credit transaction on a connected account. Numeral connects to your bank to retrieve account statements and extract transactions.
