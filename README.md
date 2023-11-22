@@ -8,6 +8,7 @@ _**SUMMARY**_
   * [Counterparties](https://github.com/MIPISE/numeral#counterparties)
   * [Counterparty Accounts](https://github.com/MIPISE/numeral#counterpartyaccounts)
   * [Direct Debit Mandates](https://github.com/MIPISE/numeral#directdebitmandates)
+  * [Inquiries](https://github.com/MIPISE/numeral#inquiries)
   * [Payment Orders](https://github.com/MIPISE/numeral#paymentorders)
   * [Returns](https://github.com/MIPISE/numeral#returns)
   * [ReturnRequests](https://github.com/MIPISE/numeral#returnrequests)
@@ -64,6 +65,15 @@ Numeral::V1::DirectDebitMandates::DirectDebitMandateId.update(direct_debit_manda
 Numeral::V1::DirectDebitMandates::DirectDebitMandateId.disable(direct_debit_mandate_id)
 Numeral::V1::DirectDebitMandates::DirectDebitMandateId.block(direct_debit_mandate_id)
 Numeral::V1::DirectDebitMandates::DirectDebitMandateId.authorize(direct_debit_mandate_id)
+```
+### Inquiries
+An inquiry is a request for status update on a previous message. Only inquiries that relate to return requests are processed.
+***⚠️ TEST failing. Can't update a inquiry because can't validate a payment by the bank***
+```rb
+Numeral::V1::Inquiries.get_list(options)
+Numeral::V1::Inquiries.create(body: body)
+Numeral::V1::Inquiries::InquiryId.deny(inquiry_id, body: body)
+Numeral::V1::Inquiries::InquiryId.get(inquiry_id)
 ```
 ### PaymentOrders
 A payment order is an order to create a payment to or out of one of your connected accounts. Numeral connects to your bank to process this payment and sends status updates through webhooks.
