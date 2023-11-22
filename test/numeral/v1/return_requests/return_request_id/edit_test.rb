@@ -4,8 +4,8 @@ require "test_helper"
 
 describe "Numeral::V1::ReturnRequests::ReturnRequestId#accept" do
   it "render accepted return request" do
-    #Create payment
-    #Create return request
+    # Create payment
+    # Create return request
     # Accept request
 
     # assert res.is_a? Hash
@@ -30,8 +30,8 @@ end
 
 describe "Numeral::V1::ReturnRequests::ReturnRequestId#deny" do
   it "render denied return request" do
-    #Create payment
-    #Create return request
+    # Create payment
+    # Create return request
     # Accept request
 
     # assert res.is_a? Hash
