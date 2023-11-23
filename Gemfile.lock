@@ -15,6 +15,7 @@ GEM
       builder
       minitest (>= 5.0)
       ruby-progressbar
+    ox (2.14.17)
     rake (13.0.6)
     ruby-progressbar (1.13.0)
 
@@ -26,6 +27,7 @@ DEPENDENCIES
   minitest
   minitest-reporters
   numeral!
+  ox
   rake
 
 BUNDLED WITH
