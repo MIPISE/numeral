@@ -8,6 +8,7 @@ _**SUMMARY**_
   * [Counterparties](https://github.com/MIPISE/numeral#counterparties)
   * [Counterparty Accounts](https://github.com/MIPISE/numeral#counterpartyaccounts)
   * [Direct Debit Mandates](https://github.com/MIPISE/numeral#directdebitmandates)
+  * [Files](https://github.com/MIPISE/numeral#files)
   * [Inquiries](https://github.com/MIPISE/numeral#inquiries)
   * [Payment Orders](https://github.com/MIPISE/numeral#paymentorders)
   * [Returns](https://github.com/MIPISE/numeral#returns)
@@ -65,6 +66,15 @@ Numeral::V1::DirectDebitMandates::DirectDebitMandateId.update(direct_debit_manda
 Numeral::V1::DirectDebitMandates::DirectDebitMandateId.disable(direct_debit_mandate_id)
 Numeral::V1::DirectDebitMandates::DirectDebitMandateId.block(direct_debit_mandate_id)
 Numeral::V1::DirectDebitMandates::DirectDebitMandateId.authorize(direct_debit_mandate_id)
+```
+### Files
+A file is received from or sent to a bank. A file can be a payment file, a payment status report, an account statement, etc. The Numeral API allows you to list, approve, and download files.
+***⚠️ TEST failing. Can't update a inquiry because can't validate a payment by the bank***
+```rb
+Numeral::V1::Inquiries.get_list(options)
+Numeral::V1::Inquiries::InquiryId.get(file_id)
+Numeral::V1::Inquiries::InquiryId.approve(file_id)
+Numeral::V1::Inquiries::InquiryId.cancel(file_id)
 ```
 ### Inquiries
 An inquiry is a request for status update on a previous message. Only inquiries that relate to return requests are processed.
