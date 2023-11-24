@@ -13,10 +13,6 @@ module Numeral
       request(uri, body: body, method: "POST")
     end
 
-    def put(uri, body)
-      request(uri, body: body, method: "PUT")
-    end
-
     private
 
     def request(path, body: {}, method: "GET")

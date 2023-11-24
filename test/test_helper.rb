@@ -5,6 +5,7 @@ require "dotenv/load"
 require "numeral"
 require "minitest/autorun"
 require "minitest/reporters"
+require_relative "bank_simulator/base"
 
 Numeral.configure do |conf|
   conf.url_api = ENV["NUMERAL_URL_API"]
