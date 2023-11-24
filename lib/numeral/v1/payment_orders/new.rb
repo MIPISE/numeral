@@ -25,7 +25,7 @@ module Numeral
             requested_execution_date
             auto_approval
             metadata
-            idempotency-key
+            idempotency_key
           ]
           ensure_keys(body, required_keys, optional_keys)
 

@@ -62,7 +62,7 @@ describe "Numeral::V1::PaymentOrders::PaymentOrderId#approve" do
         holder_name: "Test & Co 2"
       },
       reference: "test-#{SecureRandom.hex(10)}",
-      "idempotency-key": SecureRandom.uuid
+      idempotency_key: SecureRandom.uuid
     }
     payment_order_id = Numeral::V1::PaymentOrders.create(body: body)["id"]
 
@@ -108,7 +108,7 @@ describe "Numeral::V1::PaymentOrders::PaymentOrderId#cancel" do
         holder_name: "Test & Co 2"
       },
       reference: "test-#{SecureRandom.hex(10)}",
-      "idempotency-key": SecureRandom.uuid
+      idempotency_key: SecureRandom.uuid
     }
     payment_order_id = Numeral::V1::PaymentOrders.create(body: body)["id"]
 
@@ -154,7 +154,7 @@ describe "Numeral::V1::PaymentOrders::PaymentOrderId#retry" do
         holder_name: "Test & Co 2"
       },
       reference: "test-#{SecureRandom.hex(10)}",
-      "idempotency-key": SecureRandom.uuid
+      idempotency_key: SecureRandom.uuid
     }
     payment_order_id = Numeral::V1::PaymentOrders.create(body: body)["id"]
 

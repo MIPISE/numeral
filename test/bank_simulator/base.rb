@@ -39,7 +39,7 @@ module BankSimulator
     def request(filename, body)
       timestamp = Time.now.strftime("%Y%m%d%H%M%S")
       uri = URI.parse(
-        "#{Numeral.configuration.url_api}/v1/simulator/connected_accounts/#{connected_account_id}/services/sct/bank_files/incoming/#{timestamp}.#{filename}.xml"
+        "#{Numeral.configuration.url_api}/v1/simulator/connected_accounts/#{@connected_account["id"]}/services/sct/bank_files/incoming/#{timestamp}.#{filename}.xml"
       )
       headers = {"content-type": "application/xml", "x-api-key": Numeral.configuration.api_key}
 
@@ -52,4 +52,4 @@ module BankSimulator
   end
 end
 
-Dir["./test/bank_simulator/xml/*.rb"].each { |f| require f }
+Dir["./test/bank_simulator/xml/**/*.rb"].each { |f| require f }

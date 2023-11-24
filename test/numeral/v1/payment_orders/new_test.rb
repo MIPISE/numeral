@@ -21,7 +21,7 @@ describe "Numeral::V1::PaymentOrders#create" do
         holder_name: "Test & Co 2"
       },
       reference: "test-#{SecureRandom.hex(10)}",
-      "idempotency-key": SecureRandom.uuid
+      idempotency_key: SecureRandom.uuid
     }
   end
   it "create new payment order" do

@@ -32,7 +32,7 @@ module Numeral
           end
 
           def retry(payment_order_id, body: {})
-            optional_keys = %i[connected_account_id type requested_execution_date idempotency-key]
+            optional_keys = %i[connected_account_id type requested_execution_date idempotency_key]
             ensure_keys(body, [], optional_keys)
 
             Numeral.post(

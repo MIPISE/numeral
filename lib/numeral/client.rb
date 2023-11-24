@@ -22,7 +22,7 @@ module Numeral
         accept: "application/json",
         "x-api-key": Numeral.configuration.api_key
       }
-      headers.merge("idempotency-key" => body.delete("idempotency-key")) if !body["idempotency-key"].nil?
+      headers.merge("Idempotency-Key" => body.delete(:idempotency_key)) if !body[:idempotency_key].nil?
       http = Net::HTTP.new(uri.host, uri.port)
       http.use_ssl = true
       res = http.send_request(method, uri.to_s, body.to_json, headers)
