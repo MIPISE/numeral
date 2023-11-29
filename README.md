@@ -116,7 +116,6 @@ Numeral::V1::Returns::ReturnId.get(return_id)
 ```
 ### ReturnRequests
 Also sometimes called a recall, a return request is the request to return an incoming payment or payment order. This feature is only available to financial institution customers.
-***⚠️ TEST failing. Can't create or update a return because can't validate a payment by the bank***
 ```rb
 Numeral::V1::ReturnRequests.get_list(options)
 Numeral::V1::ReturnRequests.create(body: body)

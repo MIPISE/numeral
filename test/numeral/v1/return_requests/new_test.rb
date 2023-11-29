@@ -11,14 +11,13 @@ describe "Numeral::V1::ReturnRequests#create" do
   end
 
   it "create new return request" do
-    # @body[:related_payment_id] = Numeral::V1::PaymentOrders.get_list(uri_opt: {limit: "1"})["records"].last["id"]
+    po = Numeral::V1::PaymentOrders.get_list(uri_opt: {limit: "1", status: "sent"})["records"].last
+    BankSimulator::Xml::PaymentStatusReport::SctAccept.simulate(payment_order: po)
+    @body[:related_payment_id] = po["id"]
 
-    # # validate payment_orders
-
-    # response = Numeral::V1::ReturnRequests.create(body: @body)
-
-    # assert !response["id"].nil?
-    # assert response["object"] == "return_request"
+    response = Numeral::V1::ReturnRequests.create(body: @body)
+    assert !response["id"].nil?
+    assert response["object"] == "return_request"
   end
 
   it "render error with not recognized body key" do
