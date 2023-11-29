@@ -9,6 +9,7 @@ _**SUMMARY**_
   * [Counterparty Accounts](https://github.com/MIPISE/numeral#counterpartyaccounts)
   * [Direct Debit Mandates](https://github.com/MIPISE/numeral#directdebitmandates)
   * [Files](https://github.com/MIPISE/numeral#files)
+  * [IncomingPayments](https://github.com/MIPISE/numeral#incomingpayments)
   * [Inquiries](https://github.com/MIPISE/numeral#inquiries)
   * [Payment Orders](https://github.com/MIPISE/numeral#paymentorders)
   * [Returns](https://github.com/MIPISE/numeral#returns)
@@ -75,6 +76,16 @@ Numeral::V1::Inquiries.get_list(options)
 Numeral::V1::Inquiries::InquiryId.get(file_id)
 Numeral::V1::Inquiries::InquiryId.approve(file_id)
 Numeral::V1::Inquiries::InquiryId.cancel(file_id)
+```
+### IncomingPayments
+An incoming payment is a payment received included in an incoming payment file, such as a pacs.008 file for incoming SEPA credit transfers (SCTs) or pacs.003 file for incoming SEPA direct debits (SDD). Numeral receives incoming payment files from your bank and breaks them down into individual incoming payments. This feature is only available to financial institution customers.
+***⚠️ TEST failing. Can't update a inquiry because can't validate a payment by the bank***
+```rb
+Numeral::V1::IncomingPayments.get_list(options)
+Numeral::V1::IncomingPayments::IncomingPaymentId.get(incoming_payment_id)
+Numeral::V1::IncomingPayments::IncomingPaymentId.update(incoming_payment_id, body: body)
+Numeral::V1::IncomingPayments::IncomingPaymentId.reject(incoming_payment_id, body: body)
+Numeral::V1::IncomingPayments::IncomingPaymentId.accept(incoming_payment_id)
 ```
 ### Inquiries
 An inquiry is a request for status update on a previous message. Only inquiries that relate to return requests are processed.
