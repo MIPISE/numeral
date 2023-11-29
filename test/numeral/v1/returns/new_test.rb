@@ -11,8 +11,10 @@ describe "Numeral::V1::Returns#create" do
   end
 
   it "create new return" do
-    @body[:related_payment_id] = Numeral::V1::PaymentOrders.get_list(uri_opt: {limit: "1"})["records"].last["id"]
+    BankSimulator::Xml::IncomingPayments::Create.simulate(amount: 100)
+    return_id = Numeral::V1::IncomingPayments.get_list(uri_opt: {limit: "1"})["records"].last["id"]
 
+    @body[:related_payment_id] = return_id
     response = Numeral::V1::Returns.create(body: @body)
     assert !response["id"].nil?
     assert response["object"] == "return"
