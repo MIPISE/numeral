@@ -18,7 +18,7 @@ module BankSimulator
 
     def execute
       request(
-        underscore(self.class.name),
+        underscore(self.class.name).split("/").last,
         generate_xml
       )
     end
