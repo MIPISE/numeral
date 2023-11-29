@@ -4,7 +4,7 @@ module BankSimulator
   module Xml
     module PaymentStatusReport
       class Rejected < BankSimulator::Base
-        # BankSimulator::PaymentStatusReport::Rejected.call(connected_account: ca, payment_order: po)
+        # BankSimulator::Xml::PaymentStatusReport::Rejected.simulate(connected_account: ca, payment_order: po)
         def generate_xml
           super do |doc|
             document = Ox::Element.new(:Document)

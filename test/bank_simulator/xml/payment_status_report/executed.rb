@@ -4,7 +4,7 @@ module BankSimulator
   module Xml
     module PaymentStatusReport
       class Executed < BankSimulator::Base
-        # BankSimulator::PaymentStatusReport::Executed.call(payment_order: po)
+        # BankSimulator::Xml::PaymentStatusReport::Executed.simulate(payment_order: po)
         def generate_xml
           super do |doc|
             document = Ox::Element.new(:Document)

@@ -4,7 +4,7 @@ module BankSimulator
   module Xml
     module PaymentStatusReport
       class SctAccept < BankSimulator::Base
-        # BankSimulator::PaymentStatusReport::SctAccept.simulate(payment_order: po)
+        # BankSimulator::Xml::PaymentStatusReport::SctAccept.simulate(payment_order: po)
         def generate_xml
           super do |doc|
             document = Ox::Element.new(:Document)

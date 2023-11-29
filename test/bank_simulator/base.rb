@@ -47,6 +47,7 @@ module BankSimulator
       http.use_ssl = true
       res = http.send_request("POST", uri.to_s, body, headers)
 
+      sleep(5)
       JSON.parse(res.body)
     end
   end
