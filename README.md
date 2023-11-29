@@ -109,8 +109,6 @@ Numeral::V1::PaymentOrders::PaymentOrderId.retry(payment_order_id, body: body)
 ```
 ### Returns
 A return is the return of an incoming payment or payment order.
-
-***⚠️ TEST failing. Can't create a return because can't validate a payment by the bank***
 ```rb
 Numeral::V1::Returns.get_list(options)
 Numeral::V1::Returns.create(body: body)
