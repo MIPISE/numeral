@@ -7,7 +7,6 @@ describe "Numeral::V1::Files::FileId#cancel" do
     file_id = Numeral::V1::Files.get_list(uri_opt: {status: "sent", limit: 1})["records"].first["id"]
 
     res = Numeral::V1::Files::FileId.approve(file_id)
-    binding.irb
     assert res.is_a? Hash
     assert res.dig("id") == file_id
     assert res.dig("status") == "approved"
