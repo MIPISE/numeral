@@ -70,12 +70,12 @@ Numeral::V1::DirectDebitMandates::DirectDebitMandateId.authorize(direct_debit_ma
 ```
 ### Files
 A file is received from or sent to a bank. A file can be a payment file, a payment status report, an account statement, etc. The Numeral API allows you to list, approve, and download files.
-***⚠️ TEST failing. Can't update a inquiry because can't validate a payment by the bank***
+***⚠️ TEST not complete for approve and cancel.	Automatically approved by Numeral***
 ```rb
-Numeral::V1::Inquiries.get_list(options)
-Numeral::V1::Inquiries::InquiryId.get(file_id)
-Numeral::V1::Inquiries::InquiryId.approve(file_id)
-Numeral::V1::Inquiries::InquiryId.cancel(file_id)
+Numeral::V1::Files.get_list(options)
+Numeral::V1::Files::FileId.get(file_id)
+Numeral::V1::Files::FileId.approve(file_id)
+Numeral::V1::Files::FileId.cancel(file_id)
 ```
 ### IncomingPayments
 An incoming payment is a payment received included in an incoming payment file, such as a pacs.008 file for incoming SEPA credit transfers (SCTs) or pacs.003 file for incoming SEPA direct debits (SDD). Numeral receives incoming payment files from your bank and breaks them down into individual incoming payments. This feature is only available to financial institution customers.
