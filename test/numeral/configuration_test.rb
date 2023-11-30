@@ -17,6 +17,15 @@ describe "Configuration" do
         .each { |key| conf.delete_field(key) }
     end
 
+    after do
+      (conf = Numeral.configuration)
+        .to_h
+        .keys
+        .each { |key| conf.delete_field(key) }
+      conf.url_api = ENV["NUMERAL_URL_API"]
+      conf.api_key = ENV["NUMERAL_API_KEY"]
+    end
+
     it "configuration work correctly" do
       Numeral.configure do |conf|
         conf.api_key = "api_key"
@@ -31,7 +40,7 @@ describe "Configuration" do
     end
 
     it "raise error when required keys missing" do
-      assert_raises(ArgumentError) { Numeral.configure { |conf| conf.api_test = "api_key" } }
+      assert_raises(ArgumentError) { Numeral.configure { |conf| conf.api_key = "api_key" } }
     end
   end
 end

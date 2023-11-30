@@ -162,9 +162,8 @@ describe "Numeral::V1::DirectDebitMandates::DirectDebitMandateId#authorize" do
       signature_date: "2023-05-31"
     }
     direct_debit_mandate_id = Numeral::V1::DirectDebitMandates.create(body: body)["id"]
-    Numeral::V1::DirectDebitMandates::DirectDebitMandateId.block(@direct_debit_mandate_id)
+    Numeral::V1::DirectDebitMandates::DirectDebitMandateId.block(direct_debit_mandate_id)
     res = Numeral::V1::DirectDebitMandates::DirectDebitMandateId.authorize(direct_debit_mandate_id)
-
     assert res.is_a? Hash
     assert res.dig("id") == direct_debit_mandate_id
     assert res.dig("status") == "active"
