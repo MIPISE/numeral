@@ -79,7 +79,7 @@ Numeral::V1::Files::FileId.cancel(file_id)
 ```
 ### IncomingPayments
 An incoming payment is a payment received included in an incoming payment file, such as a pacs.008 file for incoming SEPA credit transfers (SCTs) or pacs.003 file for incoming SEPA direct debits (SDD). Numeral receives incoming payment files from your bank and breaks them down into individual incoming payments. This feature is only available to financial institution customers.
-***⚠️ TEST failing. Can't update a inquiry because can't validate a payment by the bank***
+***⚠️ TEST failing. Can't update a incoming payments because only with status pending_confirmation can be confirmed***
 ```rb
 Numeral::V1::IncomingPayments.get_list(options)
 Numeral::V1::IncomingPayments::IncomingPaymentId.get(incoming_payment_id)
@@ -89,7 +89,7 @@ Numeral::V1::IncomingPayments::IncomingPaymentId.accept(incoming_payment_id)
 ```
 ### Inquiries
 An inquiry is a request for status update on a previous message. Only inquiries that relate to return requests are processed.
-***⚠️ TEST failing. Can't update a inquiry because can't validate a payment by the bank***
+***⚠️ TEST failing. Can't create inquiry***
 ```rb
 Numeral::V1::Inquiries.get_list(options)
 Numeral::V1::Inquiries.create(body: body)
