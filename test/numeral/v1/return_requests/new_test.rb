@@ -12,7 +12,7 @@ describe "Numeral::V1::ReturnRequests#create" do
 
   it "create new return request" do
     po = Numeral::V1::PaymentOrders.get_list(uri_opt: {limit: "1", status: "sent"})["records"].last
-    BankSimulator::Xml::PaymentStatusReport::SctAccept.simulate(payment_order: po)
+    NumeralBankSimulator::Simulator::Xml::PaymentStatusReport::SctAccept.simulate(payment_order: po, connected_account_id: ENV["NUMERAL_SETTLEMENT_ACCOUNT_ID"])
     @body[:related_payment_id] = po["id"]
 
     response = Numeral::V1::ReturnRequests.create(body: @body)

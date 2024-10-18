@@ -5,9 +5,14 @@ require "dotenv/load"
 require "numeral"
 require "minitest/autorun"
 require "minitest/reporters"
-require_relative "bank_simulator/base"
+require "numeral_bank_simulator"
 
 Numeral.configure do |conf|
+  conf.url_api = ENV["NUMERAL_URL_API"]
+  conf.api_key = ENV["NUMERAL_API_KEY"]
+end
+
+NumeralBankSimulator.configure do |conf|
   conf.url_api = ENV["NUMERAL_URL_API"]
   conf.api_key = ENV["NUMERAL_API_KEY"]
 end

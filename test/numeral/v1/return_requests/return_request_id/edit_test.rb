@@ -4,9 +4,9 @@ require "test_helper"
 
 describe "Numeral::V1::ReturnRequests::ReturnRequestId#accept" do
   it "render accepted return request" do
-    BankSimulator::Xml::IncomingPayments::Create.simulate(amount: 200)
+    NumeralBankSimulator::Simulator::Xml::IncomingPayments::Create.simulate(amount: 200, connected_account_id: ENV["NUMERAL_TECHNICAL_ACCOUNT_ID"])
     incoming_payment = Numeral::V1::IncomingPayments.get_list(uri_opt: {limit: "1"})["records"].last
-    BankSimulator::Xml::ReturnRequests::Create.simulate(incoming_payment: incoming_payment)
+    NumeralBankSimulator::Simulator::Xml::ReturnRequests::Create.simulate(incoming_payment: incoming_payment, connected_account_id: ENV["NUMERAL_TECHNICAL_ACCOUNT_ID"])
 
     res = Numeral::V1::ReturnRequests.get_list(uri_opt: {status: "received", related_payment_id: incoming_payment["id"]})["records"].last
     res = Numeral::V1::ReturnRequests::ReturnRequestId.accept(res["id"])
@@ -38,9 +38,9 @@ describe "Numeral::V1::ReturnRequests::ReturnRequestId#deny" do
   end
 
   it "render denied return request" do
-    BankSimulator::Xml::IncomingPayments::Create.simulate(amount: 200)
+    NumeralBankSimulator::Simulator::Xml::IncomingPayments::Create.simulate(amount: 200, connected_account_id: ENV["NUMERAL_TECHNICAL_ACCOUNT_ID"])
     incoming_payment = Numeral::V1::IncomingPayments.get_list(uri_opt: {limit: "1"})["records"].last
-    BankSimulator::Xml::ReturnRequests::Create.simulate(incoming_payment: incoming_payment)
+    NumeralBankSimulator::Simulator::Xml::ReturnRequests::Create.simulate(incoming_payment: incoming_payment, connected_account_id: ENV["NUMERAL_TECHNICAL_ACCOUNT_ID"])
 
     res = Numeral::V1::ReturnRequests.get_list(uri_opt: {status: "received", related_payment_id: incoming_payment["id"]})["records"].last
     res = Numeral::V1::ReturnRequests::ReturnRequestId.deny(res["id"], body: @body)

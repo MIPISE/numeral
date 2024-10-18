@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "test_helper"
+require_relative "../../../test_helper"
 
 describe "Numeral::V1::Counterparties#get_list" do
   it "render counterparties list" do
@@ -16,7 +16,6 @@ describe "Numeral::V1::Counterparties#get_list" do
 
   it "render only one transaction with recognized option" do
     res = Numeral::V1::Counterparties.get_list(uri_opt: {limit: "1"})
-
     assert res.is_a? Hash
     assert res.dig("records").is_a? Array
     assert res.dig("records").count <= 1

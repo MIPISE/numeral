@@ -11,7 +11,7 @@ describe "Numeral::V1::Returns#create" do
   end
 
   it "create new return" do
-    BankSimulator::Xml::IncomingPayments::Create.simulate(amount: 100)
+    NumeralBankSimulator::Simulator::Xml::IncomingPayments::Create.simulate(amount: 100, connected_account_id: ENV["NUMERAL_TECHNICAL_ACCOUNT_ID"])
     return_id = Numeral::V1::IncomingPayments.get_list(uri_opt: {limit: "1"})["records"].last["id"]
 
     @body[:related_payment_id] = return_id

@@ -1,3 +1,10 @@
+GIT
+  remote: https://github.com/MIPISE/numeral_bank_simulator.git
+  revision: 167d457f49cd6f5ac831dfd22a25d3b8adf801b1
+  specs:
+    numeral_bank_simulator (0.1.0)
+      ox
+
 PATH
   remote: .
   specs:
@@ -21,12 +28,14 @@ GEM
 
 PLATFORMS
   arm64-darwin-22
+  x86_64-darwin-23
 
 DEPENDENCIES
   dotenv
   minitest
   minitest-reporters
   numeral!
+  numeral_bank_simulator!
   ox
   rake
 

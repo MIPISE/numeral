@@ -12,7 +12,7 @@ describe "Numeral::V1::IncomingPayments::IncomingPaymentId#update" do
   end
 
   it "render updated incoming payment" do
-    BankSimulator::Xml::IncomingPayments::Create.simulate(amount: 100)
+    NumeralBankSimulator::Simulator::Xml::IncomingPayments::Create.simulate(amount: 100, connected_account_id: ENV["NUMERAL_TECHNICAL_ACCOUNT_ID"])
     return_id = Numeral::V1::IncomingPayments.get_list(uri_opt: {limit: "1"})["records"].last["id"]
 
     res = Numeral::V1::IncomingPayments::IncomingPaymentId.update(return_id, body: @body)
@@ -37,7 +37,7 @@ describe "Numeral::V1::IncomingPayments::IncomingPaymentId#update" do
   end
 
   it "render error with not recognized body key" do
-    BankSimulator::Xml::IncomingPayments::Create.simulate(amount: 100)
+    NumeralBankSimulator::Simulator::Xml::IncomingPayments::Create.simulate(amount: 100, connected_account_id: ENV["NUMERAL_TECHNICAL_ACCOUNT_ID"])
     return_id = Numeral::V1::IncomingPayments.get_list(uri_opt: {limit: "1"})["records"].last["id"]
     @body[:test] = "test"
     assert_raises(ArgumentError) {
