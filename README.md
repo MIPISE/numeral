@@ -27,6 +27,15 @@ Numeral.configuration do |conf|
 end
 ```
 ## Requests
+### AccountHolder
+An account holder is an individual or organization you send payments to or receive payments from.
+```rb
+Numeral::V1::AccountHolders.get_list(options)
+Numeral::V1::AccountHolders.create(body: body)
+Numeral::V1::AccountHolders::AccountHolderId.get(account_holder_id)
+Numeral::V1::AccountHolders::AccountHolderId.update(account_holder_id, body: body)
+Numeral::V1::AccountHolders::AccountHolderId.disable(account_holder_id)
+```
 ### Balances
 A balance is the balance of a connected account on a given date and time. Numeral connects to your bank to retrieve account statements and extract account balances.
 ```rb
@@ -39,24 +48,7 @@ A connected account is a bank account managed through Numeral.
 Numeral::V1::ConnectedAccounts.get_list(options)
 Numeral::V1::ConnectedAccounts::AccountId.get(account_id)
 ```
-### Counterparties
-A counterparty is an individual or organization you need to send money to or receive money from.
-```rb
-Numeral::V1::Counterparties.get_list(options)
-Numeral::V1::Counterparties.create(body: body)
-Numeral::V1::Counterparties::CounterpartyId.get(counterparty_id)
-Numeral::V1::Counterparties::CounterpartyId.update(counterparty_id, body: body)
-Numeral::V1::Counterparties::CounterpartyId.disable(counterparty_id)
-```
-### CounterpartyAccounts
-A counterparty account is the bank account of a counterparty. It has all the account details required to send a payment to this counterparty.
-```rb
-Numeral::V1::CounterpartyAccounts.get_list(options)
-Numeral::V1::CounterpartyAccounts.create(body: body)
-Numeral::V1::CounterpartyAccounts::CounterpartyAccountId.get(counterparty_account_id)
-Numeral::V1::CounterpartyAccounts::CounterpartyAccountId.update(counterparty_account_id, body: body)
-Numeral::V1::CounterpartyAccounts::CounterpartyAccountId.disable(counterparty_account_id)
-```
+
 ### Direct debit mandates
 A direct debit mandate authorises a creditor (a company, public administration, or association) to collect payments from a debtor's bank account (a company, public administration, association, or individual).
 ```rb
@@ -67,6 +59,18 @@ Numeral::V1::DirectDebitMandates::DirectDebitMandateId.update(direct_debit_manda
 Numeral::V1::DirectDebitMandates::DirectDebitMandateId.disable(direct_debit_mandate_id)
 Numeral::V1::DirectDebitMandates::DirectDebitMandateId.block(direct_debit_mandate_id)
 Numeral::V1::DirectDebitMandates::DirectDebitMandateId.authorize(direct_debit_mandate_id)
+```
+### ExternalAccount
+An external account represents the bank account details required to send payments to or collect payments from an external account holder.
+```rb
+Numeral::V1::ExternalAccounts.get_list(options)
+Numeral::V1::ExternalAccounts.create(body: body)
+Numeral::V1::ExternalAccounts::ExternalAccounttId.get(external_account_id)
+Numeral::V1::ExternalAccounts::ExternalAccounttId.update(external_account_id, body: body)
+Numeral::V1::ExternalAccounts::ExternalAccounttId.approve(external_account_id)
+Numeral::V1::ExternalAccounts::ExternalAccounttId.deny(external_account_id)
+Numeral::V1::ExternalAccounts::ExternalAccounttId.verify(external_account_id)
+Numeral::V1::ExternalAccounts::ExternalAccounttId.disable(external_account_id)
 ```
 ### Files
 A file is received from or sent to a bank. A file can be a payment file, a payment status report, an account statement, etc. The Numeral API allows you to list, approve, and download files.
@@ -95,6 +99,15 @@ Numeral::V1::Inquiries.get_list(options)
 Numeral::V1::Inquiries.create(body: body)
 Numeral::V1::Inquiries::InquiryId.deny(inquiry_id, body: body)
 Numeral::V1::Inquiries::InquiryId.get(inquiry_id)
+```
+### InternalAccount
+Payment Service Providers (PSPs) are expected to manage customers’ accounts from which payment should be sent to and to which they can be received. Such accounts are identified in Numeral as Internal accounts. They will be typed "own", or "virtual" to encompass both own interbank accounts used by regulated financial institutions, as well as regular virtual accounts (also referred to as "virtual IBANs" or "VIBANs").
+```rb
+Numeral::V1::InternalAccounts.get_list(options)
+Numeral::V1::InternalAccounts.create(body: body)
+Numeral::V1::InternalAccounts::InternalAccounttId.get(internal_account_id)
+Numeral::V1::InternalAccounts::InternalAccounttId.update(internal_account_id, body: body)
+Numeral::V1::InternalAccounts::InternalAccounttId.disable(internal_account_id)
 ```
 ### PaymentOrders
 A payment order is an order to create a payment to or out of one of your connected accounts. Numeral connects to your bank to process this payment and sends status updates through webhooks.
@@ -129,14 +142,6 @@ A transaction is a debit or credit transaction on a connected account. Numeral c
 Numeral::V1::Transactions.get_list(options)
 Numeral::V1::Transactions::TransactionId.get(transaction_id)
 ```
-### VirtualAccounts
-A virtual account is a unique account number linked to a main bank account. It can be assigned to counterparties and expected payments to facilitate the identification of payments received, as part of a manual or automated reconciliation.
-```rb
-Numeral::V1::VirtualAccounts.get_list(options)
-Numeral::V1::VirtualAccounts.create(body: body)
-Numeral::V1::VirtualAccounts::VirtualAccountId.get(virtual_account_id)
-Numeral::V1::VirtualAccounts::VirtualAccountId.update(virtual_account_id, body: body)
-Numeral::V1::VirtualAccounts::VirtualAccountId.disable(virtual_account_id)
-Numeral::V1::VirtualAccounts::VirtualAccountId::Counterparties::CounterpartyId.assign(virtual_account_id, counterparty_id)
-Numeral::V1::VirtualAccounts::VirtualAccountId::Counterparties::CounterpartyId.unassign(virtual_account_id, counterparty_id)
-```
+## Development
+To run all tests : 
+`bundle exec rake test`

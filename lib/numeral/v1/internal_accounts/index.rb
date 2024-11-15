@@ -2,7 +2,7 @@
 
 module Numeral
   module V1
-    module ConnectedAccounts
+    module InternalAccounts
       extend Helpers
 
       class << self
@@ -13,8 +13,15 @@ module Numeral
             sort_order
             start_date
             end_date
-            enabled
-            bank_name
+            connected_account_id
+            name
+            type
+            account_number
+            bank_code
+            creditor_identifier
+            account_holder_id
+            holder_name
+            status
           ]
           ensure_keys(uri_opt, [], permitted_uri_opt)
 
