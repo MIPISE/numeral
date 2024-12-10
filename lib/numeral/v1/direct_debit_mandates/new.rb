@@ -16,9 +16,10 @@ module Numeral
           ]
           optional_keys = %i[
             connected_account_id
-            receiving_account_id
+            generate_mandate_reference
             originating_account
             receiving_account
+            receiving_account_id
             metadata
           ]
           ensure_keys(body, required_keys, optional_keys)
