@@ -8,8 +8,8 @@ module Numeral
 
         class << self
           def update(direct_debit_mandate_id, body: {})
-            required_keys = %i[metadata]
-            ensure_keys(body, required_keys, [])
+            optional_keys = %i[metadata signature_date]
+            ensure_keys(body, [], optional_keys)
 
             Numeral.post(
               generate_uri.gsub("direct_debit_mandate_id", direct_debit_mandate_id),

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "test_helper"
+require_relative "../../../../test_helper"
 
 describe "Numeral::V1::DirectDebitMandates::DirectDebitMandateId#update" do
   before do
@@ -8,7 +8,8 @@ describe "Numeral::V1::DirectDebitMandates::DirectDebitMandateId#update" do
     @body = {
       metadata: {
         "test" => "test1"
-      }
+      },
+      signature_date: Date.today
     }
   end
 
@@ -18,6 +19,7 @@ describe "Numeral::V1::DirectDebitMandates::DirectDebitMandateId#update" do
     assert res.is_a? Hash
     assert res.dig("id") == @direct_debit_mandate_id
     assert res.dig("metadata") == @body[:metadata]
+    assert Date.parse(res.dig("signature_date")) == @body[:signature_date]
   end
 
   it "render error with invalid id" do
@@ -36,13 +38,6 @@ describe "Numeral::V1::DirectDebitMandates::DirectDebitMandateId#update" do
 
   it "render error with not recognized body key" do
     @body[:test] = "test"
-    assert_raises(ArgumentError) {
-      Numeral::V1::DirectDebitMandates::DirectDebitMandateId.update(@direct_debit_mandate_id, body: @body)
-    }
-  end
-
-  it "render error with missing required body key" do
-    @body.delete(:metadata)
     assert_raises(ArgumentError) {
       Numeral::V1::DirectDebitMandates::DirectDebitMandateId.update(@direct_debit_mandate_id, body: @body)
     }
