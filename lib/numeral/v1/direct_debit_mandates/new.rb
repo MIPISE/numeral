@@ -11,16 +11,16 @@ module Numeral
             direction
             type
             sequence
-            reference
-            signature_date
           ]
           optional_keys = %i[
             connected_account_id
             generate_mandate_reference
             originating_account
+            metadata
             receiving_account
             receiving_account_id
-            metadata
+            reference
+            signature_date
           ]
           ensure_keys(body, required_keys, optional_keys)
 
