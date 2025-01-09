@@ -26,6 +26,7 @@ module Numeral
             auto_approval
             metadata
             idempotency_key
+            treasury_option
           ]
           ensure_keys(body, required_keys, optional_keys)
 
