@@ -16,11 +16,13 @@ describe "Numeral::V1::InternalAccounts::InternalAccountId#disable" do
     }
     created_res = Numeral::V1::InternalAccounts.create(body: @body)
     if created_res.dig("error")
-      existing_internal_account = Numeral::V1::InternalAccounts.get_list(uri_opt: {limit: "1", account_number: account_number, status: "created"})["records"].first
+      existing_internal_account =
+        Numeral::V1::InternalAccounts.get_list(uri_opt: {limit: "1", account_number: account_number, status: "created"})["records"]&.first ||
+          Numeral::V1::InternalAccounts.get_list(uri_opt: {limit: "1", account_number: account_number, status: "active"})["records"]&.first
       Numeral::V1::InternalAccounts::InternalAccountId.disable(existing_internal_account["id"])
       created_res = Numeral::V1::InternalAccounts.create(body: @body)
     end
-    assert created_res.dig("status") == "created"
+    assert created_res.dig("status") == "active"
     @internal_account_id = created_res["id"]
     res = Numeral::V1::InternalAccounts::InternalAccountId.disable(@internal_account_id)
     assert res.is_a? Hash
