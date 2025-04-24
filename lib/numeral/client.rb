@@ -25,6 +25,8 @@ module Numeral
       headers.merge("Idempotency-Key" => body.delete(:idempotency_key)) if !body[:idempotency_key].nil?
       http = Net::HTTP.new(uri.host, uri.port)
       http.use_ssl = true
+      http.key = OpenSSL::PKey::RSA.new(Numeral.configuration.cert_private_key) if Numeral.configuration.cert_private_key
+      http.cert = OpenSSL::X509::Certificate.new(Numeral.configuration.cert) if Numeral.configuration.cert
       res = http.send_request(method, uri.to_s, body.to_json, headers)
 
       return {"error" => "not found"} if res.body == ""

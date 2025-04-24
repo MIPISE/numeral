@@ -30,9 +30,13 @@ describe "Configuration" do
       Numeral.configure do |conf|
         conf.api_key = "api_key"
         conf.url_api = "url_api"
+        conf.cert = "cert"
+        conf.cert_private_key = "cert_private_key"
       end
       assert Numeral.configuration.api_key == "api_key"
       assert Numeral.configuration.url_api == "url_api"
+      assert Numeral.configuration.cert == "cert"
+      assert Numeral.configuration.cert_private_key == "cert_private_key"
     end
 
     it "raise error when key not recognized" do

@@ -11,7 +11,7 @@ module Numeral
     def configure
       yield(configuration)
 
-      Numeral::Configuration.ensure_keys(configuration.to_h, %i[api_key url_api])
+      Numeral::Configuration.ensure_keys(configuration.to_h, %i[api_key url_api], %i[cert_private_key cert])
     end
   end
 end
