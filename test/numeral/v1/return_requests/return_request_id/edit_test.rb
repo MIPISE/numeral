@@ -1,13 +1,12 @@
 # frozen_string_literal: true
 
-require "test_helper"
+require_relative "../../../../test_helper"
 
 describe "Numeral::V1::ReturnRequests::ReturnRequestId#accept" do
   it "render accepted return request" do
     NumeralBankSimulator::Simulator::Xml::IncomingPayments::Create.simulate(amount: 200, connected_account_id: ENV["NUMERAL_TECHNICAL_ACCOUNT_ID"])
     incoming_payment = Numeral::V1::IncomingPayments.get_list(uri_opt: {limit: "1"})["records"].last
     NumeralBankSimulator::Simulator::Xml::ReturnRequests::Create.simulate(incoming_payment: incoming_payment, connected_account_id: ENV["NUMERAL_TECHNICAL_ACCOUNT_ID"])
-
     res = Numeral::V1::ReturnRequests.get_list(uri_opt: {status: "received", related_payment_id: incoming_payment["id"]})["records"].last
     res = Numeral::V1::ReturnRequests::ReturnRequestId.accept(res["id"])
     assert res["return_request"].is_a? Hash

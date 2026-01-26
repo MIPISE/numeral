@@ -10,17 +10,22 @@ module Numeral
           required_keys = %i[
             direction
             type
-            sequence
+            frequency
           ]
           optional_keys = %i[
             connected_account_id
+            creditor_account
+            creditor_account_id
+            debtor_account
+            debtor_account_id
             generate_mandate_reference
-            originating_account
             metadata
-            receiving_account
-            receiving_account_id
             reference
             signature_date
+            originating_account
+            receiving_account
+            receiving_account_id
+            sequence
           ]
           ensure_keys(body, required_keys, optional_keys)
 
