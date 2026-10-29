@@ -4,6 +4,7 @@ require_relative "numeral/helpers"
 
 require_relative "numeral/client.rb"
 require_relative "numeral/configuration.rb"
+require_relative "numeral/v1/health/index.rb"
 require_relative "numeral/v1/account_holders/index.rb"
 require_relative "numeral/v1/account_holders/new.rb"
 require_relative "numeral/v1/account_holders/account_holder_id/edit.rb"
