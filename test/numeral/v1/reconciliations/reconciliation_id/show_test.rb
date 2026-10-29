@@ -21,6 +21,6 @@ describe "Numeral::V1::Reconciliations::ReconciliationId#get" do
   it "render error with fake id" do
     res = Numeral::V1::Reconciliations::ReconciliationId.get("aa68a563-a54a-4aa3-8563-00a7a4e4f7aa")
     assert !res["error"].nil?
-    assert res["error"] == "internal server error"
+    assert res["error"] == "not found"
   end
 end

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "test_helper"
+require_relative "../../../test_helper"
 
 describe "Numeral::V1::DirectDebitMandates#create" do
   before do
@@ -20,7 +20,7 @@ describe "Numeral::V1::DirectDebitMandates#create" do
         bank_code: "SOMEBIC0XXX",
         holder_name: "SoftwareCo"
       },
-      sequence: "one_off",
+      frequency: "one_off",
       reference: "test-#{SecureRandom.hex(10)}",
       signature_date: "2023-05-31"
     }

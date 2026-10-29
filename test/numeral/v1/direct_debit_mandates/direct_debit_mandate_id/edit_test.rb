@@ -15,7 +15,6 @@ describe "Numeral::V1::DirectDebitMandates::DirectDebitMandateId#update" do
 
   it "render updated direct debit mandate" do
     res = Numeral::V1::DirectDebitMandates::DirectDebitMandateId.update(@direct_debit_mandate_id, body: @body)
-
     assert res.is_a? Hash
     assert res.dig("id") == @direct_debit_mandate_id
     assert res.dig("metadata") == @body[:metadata]
@@ -62,7 +61,7 @@ describe "Numeral::V1::DirectDebitMandates::DirectDebitMandateId#disable" do
         bank_code: "SOMEBIC0XXX",
         holder_name: "SoftwareCo"
       },
-      sequence: "one_off",
+      frequency: "one_off",
       reference: "test-#{SecureRandom.hex(10)}",
       signature_date: "2023-05-31"
     }
@@ -107,7 +106,7 @@ describe "Numeral::V1::DirectDebitMandates::DirectDebitMandateId#block" do
         bank_code: "SOMEBIC0XXX",
         holder_name: "SoftwareCo"
       },
-      sequence: "one_off",
+      frequency: "one_off",
       reference: "test-#{SecureRandom.hex(10)}",
       signature_date: "2023-05-31"
     }
@@ -152,7 +151,7 @@ describe "Numeral::V1::DirectDebitMandates::DirectDebitMandateId#authorize" do
         bank_code: "SOMEBIC0XXX",
         holder_name: "SoftwareCo"
       },
-      sequence: "one_off",
+      frequency: "one_off",
       reference: "test-#{SecureRandom.hex(10)}",
       signature_date: "2023-05-31"
     }
