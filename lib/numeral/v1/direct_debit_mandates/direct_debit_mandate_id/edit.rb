@@ -24,6 +24,16 @@ module Numeral
             )
           end
 
+          # Mambu Payments replaces /disable with /cancel ("disabled" becomes "canceled"), in production
+          # around 17 December 2026; #disable stays for existing callers.
+          # https://docs.mambupayments.com/changelog/direct-debit-mandate-logic-update
+          def cancel(direct_debit_mandate_id)
+            Numeral.post(
+              generate_uri({}, "cancel").gsub("direct_debit_mandate_id", direct_debit_mandate_id),
+              {}
+            )
+          end
+
           def block(direct_debit_mandate_id)
             Numeral.post(
               generate_uri({}, "block").gsub("direct_debit_mandate_id", direct_debit_mandate_id),

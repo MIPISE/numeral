@@ -57,6 +57,7 @@ Numeral::V1::DirectDebitMandates.create(body: body)
 Numeral::V1::DirectDebitMandates::DirectDebitMandateId.get(direct_debit_mandate_id)
 Numeral::V1::DirectDebitMandates::DirectDebitMandateId.update(direct_debit_mandate_id, body: body)
 Numeral::V1::DirectDebitMandates::DirectDebitMandateId.disable(direct_debit_mandate_id)
+Numeral::V1::DirectDebitMandates::DirectDebitMandateId.cancel(direct_debit_mandate_id)
 Numeral::V1::DirectDebitMandates::DirectDebitMandateId.block(direct_debit_mandate_id)
 Numeral::V1::DirectDebitMandates::DirectDebitMandateId.authorize(direct_debit_mandate_id)
 ```
